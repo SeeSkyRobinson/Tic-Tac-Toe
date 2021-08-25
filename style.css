@@ -19,6 +19,13 @@ body {
     border: 2px solid black;
     background-color: white;
     font-size: 200px;
+    text-align: center;
+    line-height: 80%;
+}
+
+.play-again-btn {
+    height: 50px;
+    width: 40%;
 }
 
 /* .switch-player-btn {

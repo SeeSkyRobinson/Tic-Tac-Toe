@@ -21,6 +21,12 @@
 
 var squaresArray = document.querySelectorAll('.squares')
 var winMessage = document.querySelector('.win-message')
+var playAgainBtn = document.querySelector('.play-again-btn')
+var xCounter = document.querySelector('.x-score')
+var oCounter = document.querySelector('.o-score')
+var currentPlayer = document.querySelector('.player-turn')
+var cursorChange = document.querySelector('.game-board')
+var totalGames = document.querySelector('.total-games')
 
 
 var xActivePlayer = true
@@ -28,31 +34,35 @@ var xLogArray = []
 var oLogArray = []
 var xWinCondition = false
 var oWinCondition = false
-var gameWinState = false 
+var gameWinState = false
+var checkedCounter = [] 
+var totalGamesCounter = 0
+
+xScore = 0
+oScore = 0
+
+currentPlayer.textContent = "X"
+playAgainBtn.style.display = 'none'
 
 
-
-function switchPlayer() {
-    if (xActivePlayer === true) {
-        xActivePlayer = false
-    } else {
-        xActivePlayer = true
-    }
-}
 
 for (let i = 0; i < squaresArray.length; i ++) {
     squaresArray[i].addEventListener('click', clickSquare)
 }
 
+playAgainBtn.addEventListener('click', gameReset)
+
 function clickSquare(event) {
-    if (gameWinState !== true) {
+    if (gameWinState === false) {
         enterValue(event)
+        if (xWinCondition === true || oWinCondition === true){
+            win()
+        }
     }
-    win()
 }
 
 function enterValue(event) {
-    if (event.target.classList.contains("checked") !== true) {
+    if (event.target.classList.contains("checked") === false) {
         if (xActivePlayer === true) {
             event.target.textContent = 'x'
             xLogArray.push(event.target.id)
@@ -112,18 +122,80 @@ function enterValue(event) {
         }
         switchPlayer()
         event.target.classList.add("checked")
+        for (let i = 0; i < squaresArray.length; i++) {
+            if (squaresArray[i].textContent === 'x' || squaresArray[i].textContent === 'o'){
+                checkedCounter.push('1')
+            }
+        }
+        if (checkedCounter.length === 45) { 
+            //45 is the number at which the above lines have run every time each square has been clicked. this could be moved out of the click function. THIS COULD SHOULD BE IN ITS OWN DRAW FUNCTION
+           winMessage.textContent = "You've drawn!"
+           playAgainBtn.style.display = 'block'
+           totalGamesCounter += 1
+           totalGames.textContent = totalGamesCounter
+        }
     }    
+}
+
+function switchPlayer() {
+    if (xActivePlayer === true) {
+        xActivePlayer = false
+        cursorChange.style.cursor = 'not-allowed'
+        currentPlayer.textContent = 'O'
+    } else {
+        xActivePlayer = true
+        cursorChange.style.cursor = 'crosshair'
+        currentPlayer.textContent = 'X'
+    }
 }
 
 function win() {
     if (oWinCondition === true) {
         winMessage.textContent = "O wins!"
         gameWinState = true
+        oScore += 1
+        oCounter.textContent = oScore
     } else if (xWinCondition === true) {
         winMessage.textContent = "X wins!"
         gameWinState = true
+        xScore += 1
+        xCounter.textContent = xScore
+    }
+    if (gameWinState === true) {
+        playAgainBtn.style.display = 'block'
+        totalGamesCounter += 1
+        totalGames.textContent = totalGamesCounter
     }
 }
+
+function gameReset() {
+    switchPlayer()
+    if (xActivePlayer === true) {
+        currentPlayer.textContent = 'X'
+    } else {
+        currentPlayer.textContent = 'O'
+    }
+    for (let i = 0; i < squaresArray.length; i ++) {
+        squaresArray[i].textContent = ''
+    }
+    for (let i = 0; i < squaresArray.length; i ++) {
+        squaresArray[i].classList.remove('checked')
+    }
+    playAgainBtn.style.display = 'none'
+    gameWinState = false
+    winMessage.textContent = ''
+    xWinCondition = false
+    oWinCondition = false
+    xLogArray = []
+    oLogArray = []
+    checkedCounter = []
+}
+
+
+
+
+
+
 
 
 
