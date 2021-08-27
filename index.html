@@ -13,23 +13,43 @@
         <h1>Tic Tac Toe</h1>
     </header>
     <section class="scores">
-        <h3>X's score: <span class="x-score"></span></h3>
-        <h3>O's score: <span class="o-score"></span></h3>
-        <h3>Games: <span class="total-games"></span></h3>
-        <h2>"<span class='player-turn'></span>"s turn</h2>
-        <button class="play-again-btn"><span class="win-message"></span> Play again</button>
+        
+        
+        <!-- <h3 class="ai-score-wrapper">AI's score: <span class="ai-score">0</span></h3> -->
+        <div class="games-turn-wrapper">
+            <h3>Total games: <span class="total-games">0</span></h3>
+            <h2>"<span class='player-turn'></span>'s turn</h2>
+        </div>
     </section>
 
-    <section class="game-board">
-        <div id="1" class="squares"></div>
-        <div id="2" class="squares"></div>
-        <div id="3" class="squares"></div>
-        <div id="4" class="squares"></div>
-        <div id="5" class="squares"></div>
-        <div id="6" class="squares"></div>
-        <div id="7" class="squares"></div>
-        <div id="8" class="squares"></div>
-        <div id="9" class="squares"></div>
+    <div class="main">
+        <section class="first-aside">
+            <h3>X's score: <span class="x-score">0</span></h3>
+        </section>
+        <section class="game-board-wrapper">
+            <section class="game-board">
+                <div id="1" class="squares"></div>
+                <div id="2" class="squares"></div>
+                <div id="3" class="squares"></div>
+                <div id="4" class="squares"></div>
+                <div id="5" class="squares"></div>
+                <div id="6" class="squares"></div>
+                <div id="7" class="squares"></div>
+                <div id="8" class="squares"></div>
+                <div id="9" class="squares"></div>
+            </section>
+        </section>
+        <section class="second-aside">
+            <h3><span class="o-ai-toggle">O</span>'s score: <span class="o-score">0</span></h3>
+        </section>
+    </div>
+    <section class="under-board">
+        <button class="play-again-btn">
+            <span class="win-message"></span> Play again
+        </button>
+        <button class="ai-btn">
+            AI mode: <span class="ai-mode-span"></span>
+        </button>
     </section>
 
 
