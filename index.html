@@ -7,25 +7,22 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <header class="title">
         <h1>Tic Tac Toe</h1>
     </header>
     <section class="scores">
-        
-        
-        <!-- <h3 class="ai-score-wrapper">AI's score: <span class="ai-score">0</span></h3> -->
         <div class="games-turn-wrapper">
             <h3>Total games: <span class="total-games">0</span></h3>
-            <h2>"<span class='player-turn'></span>'s turn</h2>
+            <h2>'<span class='player-turn'></span>'s turn</h2>
         </div>
     </section>
 
     <div class="main">
-        <section class="first-aside">
-            <h3>X's score: <span class="x-score">0</span></h3>
-        </section>
         <section class="game-board-wrapper">
             <section class="game-board">
                 <div id="1" class="squares"></div>
@@ -39,16 +36,21 @@
                 <div id="9" class="squares"></div>
             </section>
         </section>
-        <section class="second-aside">
-            <h3><span class="o-ai-toggle">O</span>'s score: <span class="o-score">0</span></h3>
-        </section>
     </div>
-    <section class="under-board">
+    <section class="underboard-wrapper">
+        <section class="under-board">
+            <section class="first-aside">
+                <h3 class="bottom-scores">X's score: <span class="x-score">0</span></h3>
+            </section>
+            <button class="ai-btn">
+                AI mode: <span class="ai-mode-span"></span>
+            </button>
+            <section class="second-aside">
+                <h3 class="bottom-scores"><span class="o-ai-toggle">O</span>'s score: <span class="o-score">0</span></h3>
+            </section>
+        </section>
         <button class="play-again-btn">
             <span class="win-message"></span> Play again
-        </button>
-        <button class="ai-btn">
-            AI mode: <span class="ai-mode-span"></span>
         </button>
     </section>
 

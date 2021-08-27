@@ -73,7 +73,7 @@ function aiBtnClick() {
     if (aiMode === false) {
         aiMode = true
         oAIToggle.textContent = "AI"
-        aiBtn.style.backgroundColor = 'crimson'
+        aiBtn.style.backgroundColor = 'indianred'
         startAI()
         aiModeSpan.textContent = "ON"
     } else {
